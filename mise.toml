@@ -1,0 +1,18 @@
+[tools]
+node = "24"
+
+[tasks.install]
+run = "npm ci && npm --prefix infra ci"
+
+[tasks.build]
+run = "npm run build"
+
+[tasks.lint]
+run = "npm run lint && npm run typecheck"
+
+[tasks.test]
+run = "npm test"
+
+[tasks.deploy]
+description = "Build the app and deploy the dev preview (S3 + CloudFront, us-east-1)"
+run = "npm run build && npm --prefix infra run deploy"

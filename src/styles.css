@@ -1,0 +1,49 @@
+:root {
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  color: #e8e8f0;
+  background: #14141f;
+}
+* { box-sizing: border-box; }
+body { margin: 0; min-height: 100vh; display: flex; justify-content: center; }
+.app { padding: 1.5rem; text-align: center; }
+h1 { margin: 0 0 1rem; letter-spacing: 0.3em; }
+h2, h3 { margin: 0 0 0.5rem; }
+.layout { display: flex; gap: 1.5rem; align-items: flex-start; justify-content: center; }
+.board-wrap { position: relative; }
+.board {
+  display: grid;
+  width: min(300px, 70vw);
+  aspect-ratio: 1 / 2;
+  gap: 1px;
+  background: #2a2a3d;
+  border: 3px solid #44445e;
+}
+.cell { background: #1b1b29; }
+.cell.ghost { background: #2f2f48; outline: 1px dashed #66668a; outline-offset: -2px; }
+.cell.filled { box-shadow: inset -3px -3px 0 rgba(0, 0, 0, 0.3), inset 3px 3px 0 rgba(255, 255, 255, 0.25); }
+.p-I { background: #31c7ef !important; }
+.p-O { background: #f7d308 !important; }
+.p-T { background: #ad4d9c !important; }
+.p-S { background: #42b642 !important; }
+.p-Z { background: #ef2029 !important; }
+.p-J { background: #5a65ad !important; }
+.p-L { background: #ef7921 !important; }
+.overlay {
+  position: absolute; inset: 0; display: flex; flex-direction: column;
+  align-items: center; justify-content: center; background: rgba(10, 10, 20, 0.8);
+}
+.side { display: flex; flex-direction: column; gap: 1rem; width: 170px; text-align: left; }
+.panel { background: #1f1f30; border: 1px solid #33334a; border-radius: 6px; padding: 0.75rem; }
+.preview { display: grid; gap: 1px; width: 80px; margin: 0 auto; }
+.preview .cell { aspect-ratio: 1; }
+.preview .cell.blank { background: transparent; }
+.stats div { display: flex; justify-content: space-between; margin: 0.25rem 0; }
+.buttons { display: flex; gap: 0.5rem; }
+.buttons button {
+  flex: 1; padding: 0.5rem; border: 0; border-radius: 4px;
+  background: #4a4af0; color: white; font-weight: 600; cursor: pointer;
+}
+.buttons button:disabled { opacity: 0.4; cursor: default; }
+.help ul { list-style: none; margin: 0; padding: 0; font-size: 0.85rem; line-height: 1.8; }
+kbd { background: #33334a; border-radius: 3px; padding: 0 0.35rem; font-size: 0.8rem; }
+@media (max-width: 560px) { .layout { flex-direction: column; align-items: center; } }
