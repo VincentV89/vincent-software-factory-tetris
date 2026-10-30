@@ -1,0 +1,17 @@
+[tools]
+node = "24"
+
+[tasks.install]
+run = "npm ci"
+
+[tasks.build]
+run = "npm run build"
+
+[tasks.lint]
+run = "npm run typecheck"
+
+[tasks.test]
+run = "npm test"
+
+[tasks.dev]
+run = "npm run dev"
