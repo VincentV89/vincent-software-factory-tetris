@@ -2,3 +2,4 @@ node_modules
 dist
 infra/cdk.out
 *.log
+cdk-outputs.json
