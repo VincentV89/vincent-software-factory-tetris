@@ -75,3 +75,27 @@ src/
   App.test.tsx         # component tests (jsdom)
   styles.css
 ```
+
+## Deploying to AWS
+
+The app is hosted as a static site: a **private** S3 bucket (all public access
+blocked, SSE, TLS-only) served through **CloudFront with Origin Access Control**.
+The bucket policy only allows `s3:GetObject` from this specific distribution.
+Infrastructure is defined in [`infra/template.yaml`](infra/template.yaml) (CloudFormation).
+
+Prerequisites: AWS CLI v2 and credentials allowed to manage CloudFormation, S3 and CloudFront.
+
+```bash
+mise run deploy             # or: infra/deploy.sh [stack-name]   (default stack: tetris-site)
+```
+
+The script builds the production bundle, creates or updates the stack, syncs `dist/` to the
+bucket (hashed assets cached as immutable, `index.html` set to `no-cache`), invalidates
+CloudFront, and prints the `CloudFront URL`. Get the URL again later with:
+
+```bash
+aws cloudformation describe-stacks --stack-name tetris-site \
+  --query "Stacks[0].Outputs[?OutputKey=='CloudFrontURL'].OutputValue" --output text
+```
+
+The bucket has `DeletionPolicy: Retain`. If you delete the stack, empty and delete the bucket yourself.

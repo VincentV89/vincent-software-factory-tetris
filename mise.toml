@@ -15,3 +15,7 @@ run = "npm test"
 
 [tasks.dev]
 run = "npm run dev"
+
+[tasks.deploy]
+description = "Build and deploy to AWS (private S3 + CloudFront OAC)"
+run = "bash infra/deploy.sh"
