@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Old school Nokia-style Snakes &amp; Ladders">
+  <title>Snakes &amp; Ladders — Nokia Edition</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="phone" aria-label="Nokia style phone">
+    <div class="brand">NOKIA</div>
+    <div class="bezel">
+      <canvas id="lcd" width="84" height="48" aria-label="Game screen" role="img"></canvas>
+    </div>
+    <div class="softkeys">
+      <button class="key soft" data-key="ok" aria-label="Select">&#9472;</button>
+      <button class="key nav" data-key="up" aria-label="Up">&#9650;</button>
+      <button class="key soft" data-key="back" aria-label="Back">C</button>
+    </div>
+    <div class="navrow">
+      <button class="key nav" data-key="down" aria-label="Down">&#9660;</button>
+    </div>
+    <div class="keypad">
+      <button class="key" data-key="1">1</button>
+      <button class="key" data-key="2">2<small>abc</small></button>
+      <button class="key" data-key="3">3<small>def</small></button>
+      <button class="key" data-key="4">4<small>ghi</small></button>
+      <button class="key primary" data-key="5">5<small>roll</small></button>
+      <button class="key" data-key="6">6<small>mno</small></button>
+      <button class="key" data-key="7">7<small>pqrs</small></button>
+      <button class="key" data-key="8">8<small>tuv</small></button>
+      <button class="key" data-key="9">9<small>wxyz</small></button>
+      <button class="key" data-key="mute" aria-label="Toggle sound">*<small>snd</small></button>
+      <button class="key" data-key="0">0</button>
+      <button class="key" data-key="back" aria-label="Back">#</button>
+    </div>
+  </main>
+  <p class="help">
+    Keys: <kbd>5</kbd>/<kbd>Space</kbd>/<kbd>Enter</kbd> roll &amp; select ·
+    <kbd>&uarr;</kbd><kbd>&darr;</kbd> menu · <kbd>Esc</kbd> back · <kbd>M</kbd> sound
+  </p>
+  <script type="module" src="game.js"></script>
+</body>
+</html>

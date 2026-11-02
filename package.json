@@ -1,0 +1,14 @@
+{
+  "name": "nokia-snakes-ladders",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Old school Nokia-style Snakes & Ladders, hosted on S3 + CloudFront",
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "lint": "node scripts/lint.mjs",
+    "test": "node --test test/*.test.js",
+    "start": "npx --yes http-server src -p 8080 -c-1",
+    "deploy": "./scripts/deploy.sh"
+  }
+}

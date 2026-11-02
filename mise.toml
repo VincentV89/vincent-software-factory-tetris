@@ -1,0 +1,18 @@
+[tools]
+node = "24"
+
+[tasks.build]
+description = "Build static site into dist/"
+run = "node scripts/build.mjs"
+
+[tasks.lint]
+description = "Syntax-check JS and HTML references"
+run = "node scripts/lint.mjs"
+
+[tasks.test]
+description = "Run unit tests"
+run = "node --test test/*.test.js"
+
+[tasks.deploy]
+description = "Deploy to S3 + CloudFront (needs AWS CLI + credentials)"
+run = "./scripts/deploy.sh"

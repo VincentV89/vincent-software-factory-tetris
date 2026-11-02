@@ -1,0 +1,29 @@
+name: Deploy
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+permissions:
+  id-token: write
+  contents: read
+concurrency: deploy
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    # Requires repo secret AWS_DEPLOY_ROLE_ARN (an IAM role trusting GitHub OIDC)
+    # and optionally repo variable AWS_REGION.
+    if: ${{ vars.DEPLOY_ENABLED == 'true' }}
+    env:
+      AWS_REGION: ${{ vars.AWS_REGION || 'us-east-1' }}
+      STACK_NAME: ${{ vars.STACK_NAME || 'nokia-snakes-ladders' }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - run: npm test
+      - uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.AWS_DEPLOY_ROLE_ARN }}
+          aws-region: ${{ env.AWS_REGION }}
+      - run: ./scripts/deploy.sh

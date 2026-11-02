@@ -1,0 +1,107 @@
+:root {
+  --lcd-bg: #c7f0d8;
+  --lcd-ink: #43523d;
+  --shell: #1f3a5a;
+  --shell-dark: #142738;
+  --key: #d9dde2;
+  --key-dark: #a8afb8;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  min-height: 100%;
+  background: radial-gradient(circle at 50% 20%, #3b4450, #15181c);
+  font-family: "Courier New", monospace;
+  color: #ccc;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 16px;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+}
+
+.phone {
+  width: min(380px, 94vw);
+  background: linear-gradient(160deg, var(--shell), var(--shell-dark));
+  border-radius: 60px 60px 90px 90px / 50px 50px 120px 120px;
+  padding: 22px 26px 40px;
+  box-shadow: inset 0 2px 6px rgba(255,255,255,.25), 0 20px 40px rgba(0,0,0,.6);
+}
+
+.brand {
+  text-align: center;
+  letter-spacing: 6px;
+  font-weight: bold;
+  color: #e6e9ee;
+  font-family: Arial, Helvetica, sans-serif;
+  margin-bottom: 10px;
+}
+
+.bezel {
+  background: #0d1a26;
+  border-radius: 18px 18px 30px 30px;
+  padding: 18px 16px;
+}
+
+#lcd {
+  display: block;
+  width: 100%;
+  aspect-ratio: 84 / 48;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+  background: var(--lcd-bg);
+  border-radius: 4px;
+  box-shadow: inset 0 0 12px rgba(0,0,0,.25);
+}
+
+.softkeys, .navrow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 16px;
+}
+.navrow { justify-content: center; margin-top: 6px; }
+
+.key {
+  font: bold 18px Arial, Helvetica, sans-serif;
+  color: #222;
+  background: linear-gradient(var(--key), var(--key-dark));
+  border: none;
+  border-radius: 40%;
+  padding: 8px 0;
+  cursor: pointer;
+  box-shadow: 0 3px 0 #55606c;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 1.05;
+}
+.key:active, .key.pressed { transform: translateY(2px); box-shadow: 0 1px 0 #55606c; }
+.key:focus-visible { outline: 2px solid #9fd; }
+.key small { font-size: 9px; font-weight: normal; text-transform: uppercase; }
+.key.soft { width: 70px; }
+.key.nav { width: 90px; border-radius: 30px; }
+.key.primary { background: linear-gradient(#e8f3d6, #b4c79a); }
+
+.keypad {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px 18px;
+  margin-top: 18px;
+}
+
+.help { font-size: 12px; text-align: center; opacity: .8; }
+kbd {
+  border: 1px solid #777;
+  border-radius: 3px;
+  padding: 0 4px;
+  font-size: 11px;
+}
