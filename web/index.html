@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Snakes &amp; Ladders — Nokia Edition</title>
+  <meta name="description" content="An old school Nokia-style Snakes and Ladders game.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="phone" aria-label="Retro phone">
+    <div class="brand">NOKIA</div>
+    <div class="screen-bezel">
+      <div class="lcd" id="lcd">
+        <div class="status" id="status" aria-live="polite">SNAKES&amp;LADDERS</div>
+        <canvas id="board" width="121" height="121" aria-label="Game board"></canvas>
+        <div class="softkeys"><span id="soft-left">Menu</span><span id="soft-right">Sound</span></div>
+      </div>
+    </div>
+    <div class="nav">
+      <button class="key soft" data-key="left" aria-label="Left soft key">&#9472;</button>
+      <button class="key ok" data-key="ok" aria-label="Roll / OK">OK</button>
+      <button class="key soft" data-key="right" aria-label="Right soft key">&#9472;</button>
+    </div>
+    <div class="keypad">
+      <button class="key" data-key="1">1<small>vs CPU</small></button>
+      <button class="key" data-key="2">2<small>abc</small></button>
+      <button class="key" data-key="3">3<small>def</small></button>
+      <button class="key" data-key="4">4<small>ghi</small></button>
+      <button class="key" data-key="5">5<small>roll</small></button>
+      <button class="key" data-key="6">6<small>mno</small></button>
+      <button class="key" data-key="7">7<small>pqrs</small></button>
+      <button class="key" data-key="8">8<small>tuv</small></button>
+      <button class="key" data-key="9">9<small>wxyz</small></button>
+      <button class="key" data-key="*">*</button>
+      <button class="key" data-key="0">0<small>&#9251;</small></button>
+      <button class="key" data-key="#">#</button>
+    </div>
+    <p class="help">Menu: <b>1</b> vs CPU · <b>2</b> two players. Roll with <b>5</b>, <b>OK</b>, Space or Enter.</p>
+  </main>
+  <script type="module" src="ui.js"></script>
+</body>
+</html>

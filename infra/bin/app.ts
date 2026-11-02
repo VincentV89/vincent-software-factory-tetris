@@ -1,0 +1,10 @@
+import { App } from "aws-cdk-lib";
+import { SiteStack } from "../lib/site-stack";
+
+const app = new App();
+const stage = app.node.tryGetContext("stage") ?? process.env.STAGE ?? "dev";
+
+new SiteStack(app, `NokiaSnakesLadders-${stage}`, {
+  env: { account: process.env.CDK_DEFAULT_ACCOUNT, region: process.env.CDK_DEFAULT_REGION },
+  description: `Nokia-style Snakes & Ladders static site (${stage})`,
+});

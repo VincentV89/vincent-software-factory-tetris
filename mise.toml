@@ -1,0 +1,19 @@
+[tools]
+node = "24"
+
+[tasks.install]
+run = "npm ci"
+
+[tasks.build]
+description = "Type-check infra and synthesize the CloudFormation template"
+run = ["npm test", "npx tsc -p infra --noEmit", "npm run synth --silent -- --quiet"]
+
+[tasks.lint]
+run = "npm run lint"
+
+[tasks.test]
+run = "npm test"
+
+[tasks.deploy]
+description = "Deploy S3 + CloudFront stack (STAGE env, default dev)"
+run = "npm run deploy"

@@ -1,0 +1,48 @@
+:root {
+  --lcd-bg: #9bbc0f;
+  --lcd-ink: #1e2a10;
+  --body: #2d3a4a;
+  --body-hi: #4a5d75;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; min-height: 100%; }
+body {
+  display: flex; justify-content: center; align-items: flex-start;
+  background: radial-gradient(circle at 50% 20%, #555 0, #1a1a1a 70%);
+  font-family: "Courier New", ui-monospace, monospace;
+  padding: 24px 8px;
+  min-height: 100vh;
+}
+.phone {
+  width: 340px; padding: 18px 22px 22px;
+  background: linear-gradient(160deg, var(--body-hi), var(--body) 40%, #1c2633);
+  border-radius: 60px 60px 90px 90px;
+  box-shadow: inset 0 2px 6px rgba(255,255,255,.25), 0 20px 40px rgba(0,0,0,.6);
+}
+.brand { text-align: center; color: #cfd8e3; letter-spacing: 4px; font: bold 16px Arial, sans-serif; margin: 6px 0 10px; }
+.screen-bezel { background: #111; padding: 12px; border-radius: 18px 18px 30px 30px; }
+.lcd {
+  background: var(--lcd-bg); color: var(--lcd-ink);
+  padding: 6px; border-radius: 4px;
+  box-shadow: inset 0 0 12px rgba(0,0,0,.35);
+  text-transform: uppercase; font-weight: bold;
+}
+.status { font-size: 13px; line-height: 16px; min-height: 32px; white-space: pre-line; text-align: center; }
+#board {
+  display: block; width: 100%; aspect-ratio: 1;
+  image-rendering: pixelated; image-rendering: crisp-edges;
+}
+.softkeys { display: flex; justify-content: space-between; font-size: 12px; margin-top: 4px; }
+.nav { display: grid; grid-template-columns: 1fr 1.4fr 1fr; gap: 10px; margin: 16px 6px 12px; align-items: center; }
+.keypad { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px 14px; }
+.key {
+  font: bold 18px Arial, sans-serif; color: #e8eef5; cursor: pointer;
+  background: linear-gradient(#5d708a, #34445a); border: 1px solid #1c2633;
+  border-radius: 40%/50%; padding: 6px 0; box-shadow: 0 3px 0 #141c26;
+  display: flex; flex-direction: column; align-items: center; line-height: 1;
+}
+.key small { font-size: 9px; font-weight: normal; opacity: .8; margin-top: 2px; text-transform: uppercase; }
+.key:active, .key.pressed { transform: translateY(2px); box-shadow: 0 1px 0 #141c26; }
+.key.ok { border-radius: 50%; height: 48px; background: linear-gradient(#9aa9bb, #5d708a); color: #102030; }
+.key.soft { height: 26px; }
+.help { color: #aab6c4; font-size: 11px; text-align: center; margin: 14px 0 0; }
