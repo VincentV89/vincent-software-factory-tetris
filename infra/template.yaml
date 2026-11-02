@@ -1,0 +1,77 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: Development preview for the retro Nokia Snake & Ladder game (private S3 + CloudFront OAC)
+
+Resources:
+  SiteBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: !Sub '${AWS::StackName}-${AWS::AccountId}-${AWS::Region}'
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls: true
+        BlockPublicPolicy: true
+        IgnorePublicAcls: true
+        RestrictPublicBuckets: true
+      OwnershipControls:
+        Rules:
+          - ObjectOwnership: BucketOwnerEnforced
+      BucketEncryption:
+        ServerSideEncryptionConfiguration:
+          - ServerSideEncryptionByDefault:
+              SSEAlgorithm: AES256
+
+  OriginAccessControl:
+    Type: AWS::CloudFront::OriginAccessControl
+    Properties:
+      OriginAccessControlConfig:
+        Name: !Sub '${AWS::StackName}-oac'
+        OriginAccessControlOriginType: s3
+        SigningBehavior: always
+        SigningProtocol: sigv4
+
+  Distribution:
+    Type: AWS::CloudFront::Distribution
+    Properties:
+      DistributionConfig:
+        Enabled: true
+        Comment: !Sub 'Dev preview ${AWS::StackName}'
+        DefaultRootObject: index.html
+        HttpVersion: http2
+        PriceClass: PriceClass_100
+        Origins:
+          - Id: s3-site
+            DomainName: !GetAtt SiteBucket.RegionalDomainName
+            OriginAccessControlId: !GetAtt OriginAccessControl.Id
+            S3OriginConfig:
+              OriginAccessIdentity: ''
+        DefaultCacheBehavior:
+          TargetOriginId: s3-site
+          ViewerProtocolPolicy: redirect-to-https
+          Compress: true
+          AllowedMethods: [GET, HEAD]
+          CachedMethods: [GET, HEAD]
+          CachePolicyId: 658327ea-f89d-4fab-a63d-7e88639e58f6 # Managed-CachingOptimized
+
+  SiteBucketPolicy:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: !Ref SiteBucket
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Sid: AllowCloudFrontOAC
+            Effect: Allow
+            Principal:
+              Service: cloudfront.amazonaws.com
+            Action: s3:GetObject
+            Resource: !Sub '${SiteBucket.Arn}/*'
+            Condition:
+              StringEquals:
+                AWS:SourceArn: !Sub 'arn:aws:cloudfront::${AWS::AccountId}:distribution/${Distribution}'
+
+Outputs:
+  BucketName:
+    Value: !Ref SiteBucket
+  DistributionId:
+    Value: !Ref Distribution
+  SiteUrl:
+    Value: !Sub 'https://${Distribution.DomainName}'

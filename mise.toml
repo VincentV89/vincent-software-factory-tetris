@@ -1,0 +1,17 @@
+[tasks.lint]
+description = "Syntax-check JavaScript sources"
+run = "node --check src/logic.js && node --check src/game.js && node --check test/logic.test.js"
+
+[tasks.test]
+description = "Run unit tests for game logic"
+run = "node --test test/*.test.js"
+
+[tasks.build]
+description = "Lint, test and copy static site into dist/"
+depends = ["lint", "test"]
+run = "rm -rf dist && mkdir -p dist && cp src/index.html src/style.css src/logic.js src/game.js dist/"
+
+[tasks.deploy]
+description = "Deploy development preview (S3 + CloudFront)"
+depends = ["build"]
+run = "bash scripts/deploy.sh"

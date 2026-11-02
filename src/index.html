@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Snake &amp; Ladder — Retro Nokia Edition</title>
+  <meta name="description" content="An old school Nokia-style Snake and Ladder game.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="phone" aria-label="Retro phone">
+    <div class="earpiece" aria-hidden="true"></div>
+    <div class="brand">NOKIA</div>
+    <div class="bezel">
+      <canvas id="lcd" width="132" height="152" aria-label="Game screen" role="img"></canvas>
+    </div>
+    <div class="nav">
+      <button class="key soft" data-key="back" aria-label="Back (C)">C</button>
+      <button class="key select" data-key="select" aria-label="Select / Roll">●</button>
+      <div class="updown">
+        <button class="key arrow" data-key="up" aria-label="Up">▲</button>
+        <button class="key arrow" data-key="down" aria-label="Down">▼</button>
+      </div>
+    </div>
+    <div class="keypad">
+      <button class="key num" data-key="1">1</button>
+      <button class="key num" data-key="up">2<small>▲</small></button>
+      <button class="key num" data-key="3">3</button>
+      <button class="key num" data-key="4">4</button>
+      <button class="key num" data-key="select">5<small>roll</small></button>
+      <button class="key num" data-key="6">6</button>
+      <button class="key num" data-key="7">7</button>
+      <button class="key num" data-key="down">8<small>▼</small></button>
+      <button class="key num" data-key="9">9</button>
+      <button class="key num" data-key="sound">*<small>snd</small></button>
+      <button class="key num" data-key="0">0</button>
+      <button class="key num" data-key="back">#<small>menu</small></button>
+    </div>
+  </main>
+  <p class="help">Keyboard: <kbd>Enter</kbd>/<kbd>Space</kbd>/<kbd>5</kbd> roll &amp; select ·
+    <kbd>↑</kbd><kbd>↓</kbd> menu · <kbd>Esc</kbd> back · <kbd>M</kbd> sound</p>
+  <script src="logic.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>
