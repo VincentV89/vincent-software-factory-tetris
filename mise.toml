@@ -1,0 +1,27 @@
+[tools]
+node = "24"
+
+[tasks.lint]
+description = "Syntax-check JS and validate the CloudFormation template is parseable"
+run = [
+  "node --check site/game.js",
+  "node --check site/font.js",
+  "node --check site/app.js",
+  "node --check tests/game.test.js",
+  "node --check tests/app.smoke.test.js",
+  "node scripts/check-template.js",
+]
+
+[tasks.test]
+description = "Run unit + UI smoke tests"
+run = "node --test tests/*.test.js"
+
+[tasks.build]
+description = "Lint, test and copy the static site into dist/"
+depends = ["lint", "test"]
+run = "rm -rf dist && mkdir -p dist && cp site/*.html site/*.css site/*.js dist/"
+
+[tasks.deploy]
+description = "Deploy the S3 + CloudFront stack and upload dist/ (requires AWS credentials)"
+depends = ["build"]
+run = "bash scripts/deploy.sh"

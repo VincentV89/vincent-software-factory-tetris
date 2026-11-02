@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Old-school Nokia-style Snakes &amp; Ladders, playable in your browser.">
+  <meta name="theme-color" content="#1d2b3a">
+  <title>Snakes &amp; Ladders - Nokia Edition</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="phone" aria-label="Nokia-style phone">
+    <div class="speaker" aria-hidden="true"></div>
+    <div class="brand">NOKIA</div>
+    <div class="screen-bezel">
+      <canvas id="lcd" width="136" height="83" role="img"
+              aria-label="Snakes and Ladders game screen"></canvas>
+    </div>
+    <div class="controls">
+      <button class="key soft" data-key="back" aria-label="C / back to menu">C</button>
+      <button class="key navi" data-key="ok" aria-label="OK / roll dice">OK</button>
+      <div class="arrows">
+        <button class="key arrow" data-key="up" aria-label="Up">&#9650;</button>
+        <button class="key arrow" data-key="down" aria-label="Down">&#9660;</button>
+      </div>
+    </div>
+    <div class="keypad">
+      <button class="key num" data-key="1">1<small>&nbsp;</small></button>
+      <button class="key num" data-key="2">2<small>abc</small></button>
+      <button class="key num" data-key="3">3<small>def</small></button>
+      <button class="key num" data-key="4">4<small>ghi</small></button>
+      <button class="key num" data-key="5">5<small>roll</small></button>
+      <button class="key num" data-key="6">6<small>mno</small></button>
+      <button class="key num" data-key="7">7<small>pqrs</small></button>
+      <button class="key num" data-key="8">8<small>tuv</small></button>
+      <button class="key num" data-key="9">9<small>wxyz</small></button>
+      <button class="key num" data-key="*">*<small>+</small></button>
+      <button class="key num" data-key="0">0<small>&nbsp;</small></button>
+      <button class="key num" data-key="#">#<small>&nbsp;</small></button>
+    </div>
+  </main>
+  <p class="help">
+    <b>OK</b> / <b>5</b> / <b>Enter</b> roll &middot; <b>&#9650;&#9660;</b> / <b>2</b> <b>8</b> menu &middot; <b>C</b> / <b>Esc</b> back.
+    Roll a 6 for an extra turn. Exact roll needed to reach 100.
+  </p>
+  <script src="game.js"></script>
+  <script src="font.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
