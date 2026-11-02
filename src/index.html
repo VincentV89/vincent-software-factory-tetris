@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+<title>Snakes &amp; Ladders — Nokia Edition</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main class="phone" aria-label="Retro Nokia phone">
+  <div class="earpiece"></div>
+  <div class="brand">NOKIA</div>
+  <div class="bezel">
+    <canvas id="lcd" width="168" height="96" aria-label="Game screen"></canvas>
+  </div>
+  <div class="nav">
+    <button class="key soft" data-key="ok" aria-label="Select / Roll">MENU</button>
+    <div class="rocker">
+      <button class="key arrow" data-key="up" aria-label="Up">&#9650;</button>
+      <button class="key arrow" data-key="down" aria-label="Down">&#9660;</button>
+    </div>
+    <button class="key soft c" data-key="back" aria-label="Back">C</button>
+  </div>
+  <div class="keypad">
+    <button class="key" data-key="1">1<small>o_o</small></button>
+    <button class="key" data-key="up">2<small>abc</small></button>
+    <button class="key" data-key="3">3<small>def</small></button>
+    <button class="key" data-key="4">4<small>ghi</small></button>
+    <button class="key" data-key="ok">5<small>jkl</small></button>
+    <button class="key" data-key="6">6<small>mno</small></button>
+    <button class="key" data-key="7">7<small>pqrs</small></button>
+    <button class="key" data-key="down">8<small>tuv</small></button>
+    <button class="key" data-key="9">9<small>wxyz</small></button>
+    <button class="key" data-key="star">*<small>+</small></button>
+    <button class="key" data-key="0">0<small>&#9251;</small></button>
+    <button class="key" data-key="hash">#<small>&#8679;</small></button>
+  </div>
+  <p class="help">Keys: <b>Enter/Space/5</b> roll &amp; select · <b>&uarr;&darr;/2/8</b> navigate · <b>Esc/C</b> back · <b>#</b> sound</p>
+</main>
+<script src="game.js"></script>
+<script src="main.js"></script>
+</body>
+</html>

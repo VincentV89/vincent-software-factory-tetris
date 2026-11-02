@@ -1,0 +1,18 @@
+[tools]
+node = "lts"
+
+[tasks.build]
+description = "Build static site into dist/"
+run = "bash scripts/build.sh"
+
+[tasks.lint]
+description = "Syntax-check JS and validate the CloudFormation template"
+run = "bash scripts/lint.sh"
+
+[tasks.test]
+description = "Run game logic unit tests"
+run = "node --test tests/*.test.js"
+
+[tasks.deploy]
+description = "Deploy the development preview (S3 + CloudFront)"
+run = "bash scripts/deploy.sh"
