@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Snakes &amp; Ladders — Nokia Edition</title>
+  <link rel="stylesheet" href="src/style.css" />
+</head>
+<body>
+  <main class="phone" aria-label="Retro Nokia phone">
+    <div class="earpiece"></div>
+    <div class="brand">NOKIA</div>
+    <div class="lcd" id="lcd">
+      <div class="lcd-top"><span id="top-left">P1 0</span><span id="top-right">CPU 0</span></div>
+      <canvas id="board" width="81" height="81" aria-label="Game board"></canvas>
+      <div class="lcd-msg" id="msg" role="status" aria-live="polite">SNAKES &amp; LADDERS</div>
+      <div class="lcd-soft"><span id="soft-left">Menu</span><span id="soft-right">Roll</span></div>
+    </div>
+    <div class="nav">
+      <button class="soft" data-key="menu" aria-label="Menu">&#9644;</button>
+      <button class="navi" data-key="ok" aria-label="Roll dice">OK</button>
+      <button class="soft" data-key="sound" aria-label="Toggle sound">C</button>
+    </div>
+    <div class="keypad">
+      <button data-key="1">1<small>vs CPU</small></button>
+      <button data-key="2">2<small>2 PLAYER</small></button>
+      <button data-key="3">3<small>def</small></button>
+      <button data-key="4">4<small>ghi</small></button>
+      <button data-key="5">5<small>ROLL</small></button>
+      <button data-key="6">6<small>mno</small></button>
+      <button data-key="7">7<small>pqrs</small></button>
+      <button data-key="8">8<small>tuv</small></button>
+      <button data-key="9">9<small>wxyz</small></button>
+      <button data-key="*">*<small>NEW</small></button>
+      <button data-key="0">0<small>&nbsp;</small></button>
+      <button data-key="#">#<small>SOUND</small></button>
+    </div>
+  </main>
+  <p class="help">Keys: <b>1</b> vs CPU · <b>2</b> two players · <b>5 / OK / Space</b> roll · <b>*</b> new game · <b>#</b> sound</p>
+  <script type="module" src="src/main.js"></script>
+</body>
+</html>

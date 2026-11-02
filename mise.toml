@@ -1,0 +1,19 @@
+[tools]
+node = "24"
+
+[tasks.lint]
+description = "Syntax-check all JavaScript"
+run = "for f in src/*.js test/*.js scripts/*.mjs; do node --check \"$f\" || exit 1; done"
+
+[tasks.test]
+description = "Run unit tests"
+run = "node --test test/*.test.js"
+
+[tasks.build]
+description = "Lint, test and build static site into dist/"
+depends = ["lint", "test"]
+run = "node scripts/build.mjs"
+
+[tasks.serve]
+description = "Serve the game locally on http://localhost:8080"
+run = "python3 -m http.server 8080 --directory dist"
